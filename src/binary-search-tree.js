@@ -63,10 +63,20 @@ add(data) {
  }
 
 
- find(/* data */) {
-   throw new NotImplementedError('Not implemented');
-   // remove line with error and write your code here
- }
+ find (data) {
+  if (!this.root) return undefined;
+  let current = this.root;
+  let found = false;
+
+  while (current && !found) {
+    if (data < current.data) current = current.left;
+    else if (data > current.data) current = current.right;
+    else found = true;
+  }
+
+  if (!found) return 'No founded';
+  return current;
+}
 
  remove(data) {
    this.root = removeData(this.root, data);
