@@ -50,11 +50,9 @@ add(data) {
      if (!node) {
        return false;
      }
-
      if (node.data === data) {
        return true;
      }
-
      return data < node.data ? 
        hasData(node.left, data) :
        hasData(node.right, data);
