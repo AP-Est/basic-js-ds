@@ -63,21 +63,21 @@ add(data) {
  }
 
 
- find (data) {
-  this.root = search(this.root, data)
+ find(data) {
+  if (!this.root) return undefined;
+  let current = this.root;
+  let found = false;
 
- function search(node, data) {
-  if(node === null) {
-      return null;
-  } else if(data < node.data) {
-      return this.search(node.left, data);
-  } else if(data > node.data) {
-      return this.search(node.right, data);
-  } else {
-      return node;
+  while (current && !found) {
+    if (data < current.data) current = current.left;
+    else if (data > current.data) current = current.right;
+    else found = true;
   }
+
+  if (!found) return 'No founded';
+  return current;
 }
-}
+
 
  remove(data) {
    this.root = removeData(this.root, data);
