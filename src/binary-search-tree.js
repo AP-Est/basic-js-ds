@@ -63,10 +63,21 @@ add(data) {
  }
 
 
- find(/* data */) {
-   throw new NotImplementedError('Not implemented');
-   // remove line with error and write your code here
- }
+ find (data) {
+  this.root = search(this.root, data)
+
+ function search(node, data) {
+  if(node === null) {
+      return null;
+  } else if(data < node.data) {
+      return this.search(node.left, data);
+  } else if(data > node.data) {
+      return this.search(node.right, data);
+  } else {
+      return node;
+  }
+}
+}
 
  remove(data) {
    this.root = removeData(this.root, data);
